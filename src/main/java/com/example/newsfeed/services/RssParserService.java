@@ -1,4 +1,4 @@
-package com.example.newsfeed;
+package com.example.newsfeed.services;
 
 import com.example.newsfeed.models.Feed;
 import com.example.newsfeed.models.News;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 
-import javax.sql.rowset.spi.XmlReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.time.ZoneId;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class RssParser {
+public class RssParserService {
 
     public List<News> parse(Feed newsFeed) throws Exception {
         URL feedUrl = new URL(newsFeed.getUrl());

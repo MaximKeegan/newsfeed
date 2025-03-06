@@ -1,5 +1,6 @@
-package com.example.newsfeed;
+package com.example.newsfeed.components;
 
+import com.example.newsfeed.services.NewsService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.example.newsfeed;
+package com.example.newsfeed.services;
 
 import com.example.newsfeed.models.News;
 import com.example.newsfeed.repository.FeedRepository;
@@ -13,12 +13,12 @@ import java.util.stream.Collectors;
 @Service
 public class NewsService {
 
-    private final RssParser rssParser;
+    private final RssParserService rssParser;
     private final NewsRepository newsRepository;
     private final FeedRepository feedRepository;
 
     @Autowired
-    public NewsService(RssParser rssParser, NewsRepository newsRepository, FeedRepository feedRepository) {
+    public NewsService(RssParserService rssParser, NewsRepository newsRepository, FeedRepository feedRepository) {
         this.rssParser = rssParser;
         this.newsRepository = newsRepository;
         this.feedRepository = feedRepository;
