@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список новостей</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .news-container {
+            max-width: 60%;
+            overflow: hidden;
+        }
+
+        .news-container p {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .news-container p img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .news-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .filter-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="news-container">
+    <div class="filter-container">
+        <label for="sourceFilter">Фильтр по источнику:</label>
+        <select id="sourceFilter" onchange="loadNews(this.value);">
+            <option value="">Все источники</option>
+            <th:block th:each="feed : ${feeds}">
+                <option th:value="${feed.id}" th:text="${feed.name}"></option>
+            </th:block>
+
+        </select>
+    </div>
+
+    <div id="newsList"></div>
+
+</div>
+
+<script>
+    // Глобальные переменные
+    let newsData = [];
+    let currentPage = 1;
+    const itemsPerPage = 5; // Количество новостей на странице
+
+    // Функция загрузки данных из JSON
+    async function loadNews(feedId) {
+        try {
+            var url = "/api/news";
+            if (feedId) {
+                url += "/" + feedId;
+            }
+            const response = await fetch(url);
+            newsData = await response.json();
+         renderNews();
+        } catch (error) {
+            console.error('Ошибка загрузки новостей:', error);
+        }
+    }
+
+    // Отображение новостей
+    function renderNews() {
+        const newsList = document.getElementById('newsList');
+
+        // Очистка списка
+        newsList.innerHTML = '';
+
+        // Отображение новостей
+        newsData.forEach(item => {
+            const newsDiv = document.createElement('div');
+            newsDiv.className = 'news-item';
+
+            const title = document.createElement('h2');
+            title.textContent = item.title;
+
+            const description = document.createElement('p');
+            description.innerHTML = item.description; // Вставляем как текст, а не HTML
+
+            const meta = document.createElement('p');
+            meta.innerHTML = `<small>Источник: <a href="${item.link}" target="_blank">${item.feedName}</a> | Дата: ${new Date(item.pubDate).toLocaleString()}</small>`;
+
+            newsDiv.appendChild(title);
+            newsDiv.appendChild(description);
+            newsDiv.appendChild(meta);
+            newsList.appendChild(newsDiv);
+        });
+    }
+
+    // Инициализация
+    loadNews();
+</script>
+</body>
+</html>
