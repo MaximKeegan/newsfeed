@@ -9,8 +9,4 @@ import lombok.Setter;
 @NoArgsConstructor(force = true)
 public class NewsWithFeedName extends News {
     private String feedName;
-
-//    public void setFeedName(String feedName) {
-//        this.feedName = feedName;
-//    }
 }
