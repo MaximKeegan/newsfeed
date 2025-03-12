@@ -1,15 +1,15 @@
 plugins {
-    id 'java'
-    id 'org.springframework.boot' version '3.4.0'
-    id 'io.spring.dependency-management' version '1.1.6'
+    java
+    id("org.springframework.boot") version "3.4.0"
+    id("io.spring.dependency-management") version "1.1.6"
 }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
@@ -23,22 +23,21 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 
-    implementation("org.postgresql:postgresql:42.5.0")
+    implementation("org.postgresql:postgresql:42.7.5")
     implementation("org.flywaydb:flyway-core:11.3.4")
+    implementation("org.flywaydb:flyway-database-postgresql:11.3.4")
     implementation("org.jsoup:jsoup:1.17.2")
-
 
     implementation("ch.qos.logback:logback-classic")
 
-    implementation('com.rometools:rome:1.16.0')
+    implementation("com.rometools:rome:1.16.0")
 
     implementation("org.freemarker:freemarker")
 
-    implementation ("org.projectlombok:lombok")
-    annotationProcessor ("org.projectlombok:lombok")
-
+    implementation("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
 }
 
-tasks.named('test') {
+tasks.test {
     useJUnitPlatform()
 }
