@@ -16,6 +16,5 @@ logging:
     org.springframework.jdbc.core.JdbcTemplate: TRACE
     org.springframework.jdbc.core.StatementCreatorUtils: TRACE
 
-rss:
-#  source: https://lenta.ru/rss/news
-  source: "https://techcrunch.com/feed/"
+app:
+  fetch-interval: 10000 #10 секунд

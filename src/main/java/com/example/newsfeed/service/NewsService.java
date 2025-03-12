@@ -30,7 +30,6 @@ public class NewsService {
         feed.setLastFetched(new Timestamp(System.currentTimeMillis()));
         feedRepository.save(feed);
 
-
         try {
             List<News> newsList = rssParser.parse(feed);
             if (newsList.isEmpty()) {
@@ -53,13 +52,4 @@ public class NewsService {
         }
     }
 
-    public void listNews() {
-        try {
-//            newsRepository.getAllNews();
-            System.out.println("Новости сфетчены!");
-        } catch (Exception e) {
-            System.err.println("Ошибка при получении новостей: " + e.getMessage());
-        }
-
-    }
 }
