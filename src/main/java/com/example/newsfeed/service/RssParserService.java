@@ -1,7 +1,7 @@
-package com.example.newsfeed.services;
+package com.example.newsfeed.service;
 
-import com.example.newsfeed.models.Feed;
-import com.example.newsfeed.models.News;
+import com.example.newsfeed.model.Feed;
+import com.example.newsfeed.model.News;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;

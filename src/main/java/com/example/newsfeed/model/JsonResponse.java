@@ -1,4 +1,4 @@
-package com.example.newsfeed.models;
+package com.example.newsfeed.model;
 
 public class JsonResponse {
     private String message;

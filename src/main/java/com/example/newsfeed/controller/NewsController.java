@@ -1,12 +1,12 @@
-package com.example.newsfeed.controllers;
+package com.example.newsfeed.controller;
 
-import com.example.newsfeed.repository.FeedRepository;
-import com.example.newsfeed.repository.NewsRepository;
+import com.example.newsfeed.repositor.FeedRepository;
+import com.example.newsfeed.repositor.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.example.newsfeed.models.Feed;
+import com.example.newsfeed.model.Feed;
 
 @Controller
 public class NewsController {

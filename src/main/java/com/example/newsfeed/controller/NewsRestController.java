@@ -1,9 +1,8 @@
-package com.example.newsfeed.controllers;
+package com.example.newsfeed.controller;
 
-import com.example.newsfeed.models.JsonResponse;
-import com.example.newsfeed.models.News;
-import com.example.newsfeed.models.NewsWithFeedName;
-import com.example.newsfeed.repository.NewsRepository;
+import com.example.newsfeed.model.JsonResponse;
+import com.example.newsfeed.model.NewsWithFeedName;
+import com.example.newsfeed.repositor.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/news")

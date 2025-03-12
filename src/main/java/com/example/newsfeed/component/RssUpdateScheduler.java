@@ -1,6 +1,6 @@
-package com.example.newsfeed.components;
+package com.example.newsfeed.component;
 
-import com.example.newsfeed.services.NewsService;
+import com.example.newsfeed.service.NewsService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,6 @@ public class RssUpdateScheduler {
 
     @Scheduled(fixedRate = 10000) // Каждые 60 минут
     public void updateNews() {
-        String rssUrl = "https://www.theverge.com/rss/index.xml";
-        newsService.updateNews(rssUrl);
+        newsService.updateNews();
     }
 }

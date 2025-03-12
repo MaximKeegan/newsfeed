@@ -1,4 +1,4 @@
-package com.example.newsfeed.models;
+package com.example.newsfeed.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

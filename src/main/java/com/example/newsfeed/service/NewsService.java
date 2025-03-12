@@ -1,8 +1,8 @@
-package com.example.newsfeed.services;
+package com.example.newsfeed.service;
 
-import com.example.newsfeed.models.News;
-import com.example.newsfeed.repository.FeedRepository;
-import com.example.newsfeed.repository.NewsRepository;
+import com.example.newsfeed.model.News;
+import com.example.newsfeed.repositor.FeedRepository;
+import com.example.newsfeed.repositor.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class NewsService {
         this.feedRepository = feedRepository;
     }
 
-    public void updateNews(String rssUrl) {
+    public void updateNews() {
         var feed = feedRepository.findTopEnabledOrderByLastFetchedAscending();
 
         feed.setLastFetched(new Timestamp(System.currentTimeMillis()));

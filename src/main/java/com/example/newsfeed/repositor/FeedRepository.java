@@ -1,6 +1,6 @@
-package com.example.newsfeed.repository;
+package com.example.newsfeed.repositor;
 
-import com.example.newsfeed.models.Feed;
+import com.example.newsfeed.model.Feed;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 
