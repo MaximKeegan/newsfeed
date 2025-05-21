@@ -1,17 +1,13 @@
 package com.example.newsfeed.service;
 
-import com.example.newsfeed.entity.NewsWithFeedNameEntity;
-import com.example.newsfeed.repository.FeedRepository;
-import com.example.newsfeed.repository.NewsRepository;
-import com.googlecode.jsonrpc4j.JsonRpcService;
 import com.googlecode.jsonrpc4j.spring.AutoJsonRpcServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
-//@JsonRpcService("/api/news")
-//@AutoJsonRpcServiceImpl
+@Component
+@AutoJsonRpcServiceImpl
 public class NewsJsonRpcServiceImpl implements NewsJsonRpcService {
 
 //    private final NewsRepository newsRepository;
@@ -32,7 +28,7 @@ public class NewsJsonRpcServiceImpl implements NewsJsonRpcService {
 //            throw new RuntimeException();
 //        }
 
-        List newsList = new ArrayList();
+        List<String> newsList = new ArrayList<>();
         newsList.add("test");
         newsList.add("test1");
         return newsList;

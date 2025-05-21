@@ -29,28 +29,3 @@ management:
       access: unrestricted
     health:
       access: unrestricted
-
-youkol:
-  jsonrpc4j:
-    enabled: true
-    server:
-      enabled: true
-      backwards-compatible: true
-      rethrow-exceptions: false
-      allow-extra-params: false
-      allow-less-params: false
-      should-log-invocation-errors: true
-      parallel-enabled: false
-      parallel-batch-processing-timeout: 30s
-      content-type: "application/json-rpc"
-      welcome:
-        enabled: true
-      servlet:
-        enabled: true
-        path: "/jsonrpc"
-        load-on-startup: -1
-    client:
-      base-url:
-      enabled: false
-      scan-package:
-      content-type:
