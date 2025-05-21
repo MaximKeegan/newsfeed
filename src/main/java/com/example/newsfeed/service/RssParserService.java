@@ -1,7 +1,7 @@
 package com.example.newsfeed.service;
 
-import com.example.newsfeed.model.Feed;
-import com.example.newsfeed.model.News;
+import com.example.newsfeed.entity.FeedEntity;
+import com.example.newsfeed.entity.NewsEntity;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
@@ -18,16 +18,16 @@ import java.util.List;
 @Service
 public class RssParserService {
 
-    public List<News> parse(Feed newsFeed) throws Exception {
+    public List<NewsEntity> parse(FeedEntity newsFeed) throws Exception {
         URL feedUrl = new URL(newsFeed.getUrl());
         SyndFeedInput input = new SyndFeedInput();
         try (InputStreamReader reader = new InputStreamReader(feedUrl.openStream())) {
             SyndFeed feed = input.build(reader);
 
-            List<News> newsItems = new ArrayList<>();
+            List<NewsEntity> newsItems = new ArrayList<>();
 
             for (SyndEntry entry : feed.getEntries()) {
-                News item = new News();
+                NewsEntity item = new NewsEntity();
                 item.setFeedId(newsFeed.getId());
                 item.setGuid(entry.getLink());
                 item.setAuthor(entry.getAuthor());

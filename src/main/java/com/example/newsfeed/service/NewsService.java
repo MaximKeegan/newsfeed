@@ -1,8 +1,8 @@
 package com.example.newsfeed.service;
 
-import com.example.newsfeed.model.News;
-import com.example.newsfeed.repositor.FeedRepository;
-import com.example.newsfeed.repositor.NewsRepository;
+import com.example.newsfeed.entity.NewsEntity;
+import com.example.newsfeed.repository.FeedRepository;
+import com.example.newsfeed.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,17 +31,17 @@ public class NewsService {
         feedRepository.save(feed);
 
         try {
-            List<News> newsList = rssParser.parse(feed);
+            List<NewsEntity> newsList = rssParser.parse(feed);
             if (newsList.isEmpty()) {
                 return;
             }
-            List<String> guids = newsList.stream().map(News::getGuid).collect(Collectors.toList());
+            List<String> guids = newsList.stream().map(NewsEntity::getGuid).collect(Collectors.toList());
             List<String> existingGuids = newsRepository.findByGuidIn(guids)
                     .stream()
-                    .map(News::getGuid)
+                    .map(NewsEntity::getGuid)
                     .collect(Collectors.toList());
 
-            List<News> newNews = newsList.stream()
+            List<NewsEntity> newNews = newsList.stream()
                     .filter(news -> !existingGuids.contains(news.getGuid()))
                     .collect(Collectors.toList());
 

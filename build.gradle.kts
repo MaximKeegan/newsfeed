@@ -9,11 +9,14 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
 repositories {
+    maven {
+        url = uri("https://nexus.bank24.int/content/groups/repo")
+    }
     mavenCentral()
 }
 
@@ -22,6 +25,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    implementation("com.tochka.common.jsonrpc4j:jsonrpc4j:1.0.0")
 
     implementation("org.postgresql:postgresql:42.7.5")
     implementation("org.flywaydb:flyway-core:11.3.4")

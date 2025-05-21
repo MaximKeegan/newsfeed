@@ -1,12 +1,12 @@
 package com.example.newsfeed.controller;
 
-import com.example.newsfeed.repositor.FeedRepository;
-import com.example.newsfeed.repositor.NewsRepository;
+import com.example.newsfeed.repository.FeedRepository;
+import com.example.newsfeed.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.example.newsfeed.model.Feed;
+import com.example.newsfeed.entity.FeedEntity;
 
 @Controller
 public class NewsController {
@@ -21,7 +21,7 @@ public class NewsController {
 
     @GetMapping("/news")
     public String news(Model model) {
-        Iterable<Feed> feeds = feedRepository.findAll();
+        Iterable<FeedEntity> feeds = feedRepository.findAll();
         model.addAttribute("feeds", feeds);
         return "news";
     }

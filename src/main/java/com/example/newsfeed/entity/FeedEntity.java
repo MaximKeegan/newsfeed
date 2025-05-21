@@ -1,4 +1,4 @@
-package com.example.newsfeed.model;
+package com.example.newsfeed.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Setter
 @Table("feeds")
 @NoArgsConstructor
-public class Feed {
+public class FeedEntity {
     @Id
     @Column("id")
     private Long id;

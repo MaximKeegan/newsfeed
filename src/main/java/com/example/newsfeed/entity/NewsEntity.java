@@ -1,4 +1,4 @@
-package com.example.newsfeed.model;
+package com.example.newsfeed.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @Table("news")
 @NoArgsConstructor
-public class News {
+public class NewsEntity {
     @Id
     @Column("id")
     private Long id;                // Уникальный идентификатор в базе
