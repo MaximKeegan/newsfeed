@@ -44,6 +44,15 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
 }
 
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    archiveFileName.set("newsfeed.jar")
+    destinationDirectory.set(file("$buildDir/libs"))
+}
+
+tasks.named<Jar>("jar") {
+    enabled = false
+}
+
 tasks.test {
     useJUnitPlatform()
 }

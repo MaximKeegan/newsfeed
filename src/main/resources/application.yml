@@ -1,9 +1,11 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/maximkeegan
+    url: jdbc:postgresql://${DB_HOST:postgres-service}:${DB_PORT}/${DB_NAME:maximkeegan}
     driver-class-name: org.postgresql.Driver
-    username: maximkeegan
-    password: ""
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  transaction:
+    default-timeout: 30
 
   flyway:
     enabled: true

@@ -8,6 +8,7 @@ import com.rometools.rome.io.SyndFeedInput;
 import org.springframework.stereotype.Service;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -15,6 +16,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 public class RssParserService {
 
@@ -52,7 +54,7 @@ public class RssParserService {
 
 
         } catch (Exception e) {
-            System.err.println("Ошибка при парсинге RSS: " + e.getMessage());
+            log.error("Ошибка при парсинге RSS: {}", e.getMessage());
             e.printStackTrace();
         }
         return null;

@@ -5,11 +5,14 @@ import com.example.newsfeed.repository.FeedRepository;
 import com.example.newsfeed.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class NewsService {
 
@@ -24,8 +27,9 @@ public class NewsService {
         this.feedRepository = feedRepository;
     }
 
+    @Transactional
     public void updateNews() {
-        var feed = feedRepository.findTopEnabledOrderByLastFetchedAscending();
+        var feed = feedRepository.findTopEnabledOrderByLastFetchedAscendingForUpdate();
 
         feed.setLastFetched(new Timestamp(System.currentTimeMillis()));
         feedRepository.save(feed);
@@ -46,9 +50,9 @@ public class NewsService {
                     .collect(Collectors.toList());
 
             newsRepository.saveAll(newNews);
-            System.out.println("Добавлено новых новостей: " + newNews.size());
+            log.info("Добавлено новых новостей: {}", newNews.size());
         } catch (Exception e) {
-            System.err.println("Ошибка при обновлении новостей: " + e.getMessage());
+            log.error("Ошибка при обновлении новостей: {}", e.getMessage());
         }
     }
 

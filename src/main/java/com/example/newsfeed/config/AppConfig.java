@@ -1,13 +1,11 @@
-package com.example.newsfeed.component;
+package com.example.newsfeed.config;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@Getter
-@Setter
+@Data
 @ConfigurationProperties(prefix = "app")
 public class AppConfig {
     private int fetchInterval;

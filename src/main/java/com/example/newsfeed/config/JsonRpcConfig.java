@@ -13,6 +13,8 @@ public class JsonRpcConfig {
         exporter.setAllowLessParams(true);
         exporter.setAllowExtraParams(true);
         exporter.setContentType("application/json;charset=UTF-8");
+        exporter.setErrorResolver(new CustomJsonRpcErrorResolver());
+        exporter.setHttpStatusCodeProvider(new JsonRpcHttpStatusCodeProvider());
         return exporter;
     }
 }
