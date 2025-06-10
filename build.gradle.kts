@@ -9,7 +9,7 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
@@ -42,6 +42,12 @@ dependencies {
 
     implementation("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
+
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.testcontainers:testcontainers:1.20.2")
+    testImplementation("org.testcontainers:postgresql:1.20.2")
+    testImplementation("org.testcontainers:junit-jupiter:1.20.2")
 }
 
 tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
